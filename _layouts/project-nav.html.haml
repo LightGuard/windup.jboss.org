@@ -1,0 +1,48 @@
+---
+layout: project
+---
+
+/ =========================Masthead=========================
+.navbar.navbar-inverse#navbar-fix
+	.navbar-inner
+		.container
+			%a.btn.btn-navbar(data-toggle="collapse" data-target=".nav-collapse")
+				%span.icon-bar
+				%span.icon-bar
+				%span.icon-bar
+			.nav-collapse.collapse
+				%ul.nav
+					%li.active<
+						%a(href="index.html") Overview 
+					%li<
+						%a(href="download.html") Download
+					%li<
+						%a(href="documentation.html") Documentation
+					%li<
+						%a(href="getinvolved.html") Get Involved
+					%li<
+						%a(href="https://community.jboss.org/en/windup?view=discussions") Forums
+					%li.dropdown
+						%a.dropdown-toggle(href="#" data-toggle="dropdown")<
+							= precede 'Follow Us ' do
+								%b.caret>
+						%ul.dropdown-menu.projectsocialmedia
+							%li<
+								%a(href="https://twitter.com/JBossWindup")<
+									%img(src="#{site.jborg_images_url}/common/socialmedia_icon40_twitter.png")
+							%li<
+								%a(href="#")<
+									%img(src="#{site.jborg_images_url}/common/socialmedia_icon40_googleplus.png")
+							%li<
+								%a(href="#")<
+									%img(src="#{site.jborg_images_url}/common/socialmedia_icon40_facebook.png")
+							%li<
+								%a(href="#")<
+									%img(src="#{site.jborg_images_url}/common/socialmedia_icon40_youtube.png")
+							%li<
+								%a(href="#")<
+									%img(src="#{site.jborg_images_url}/common/socialmedia_icon40_linkedin.png")
+					%li.divider
+
+~ content
+

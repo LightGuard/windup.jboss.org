@@ -1,6 +1,76 @@
+# Default page title
+title: Windup 
+
+# Default minify settings
+css_minifier: disabled
+js_minifier: disabled
+html_minifier: disabled
+
+# Merge multiple JavaScript files to improve performance
+fileMerger:
+  enabled: true
+  outputFilePath: /javascripts/bootstrap-community.js
+  paths:
+    - /javascripts/_bootstrap-transition.js
+    - /javascripts/_bootstrap-alert.js
+    - /javascripts/_bootstrap-button.js
+    - /javascripts/_bootstrap-carousel.js
+    - /javascripts/_bootstrap-collapse.js
+    - /javascripts/_bootstrap-dropdown.js
+    - /javascripts/_bootstrap-modal.js
+    - /javascripts/_bootstrap-tooltip.js
+    - /javascripts/_bootstrap-popover.js
+    - /javascripts/_bootstrap-scrollspy.js
+    - /javascripts/_bootstrap-tab.js
+    - /javascripts/_bootstrap-typeahead.js
+    - /javascripts/_bootstrap-affix.js
+    - /javascripts/_jbossorg-navbarfix.js
+    - /javascripts/_jbossorg-misc.js
+
+# Cache hosted fonts, images and javascript
+wget:
+  enabled: false
+  options:
+    - --no-remove-listing
+    - -q
+    - -r
+    - --no-parent
+    - -N
+    - --reject 'index.html*'
+    - -e robots=off
+    - --directory-prefix=cache
+  urls:
+    - http://static.jboss.org/theme/js/libs/jquery/1.9.1/jquery.js
+    - http://static.jboss.org/theme/js/libs/jquery/1.9.1/jquery.min.js
+    - http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js
+    - http://static.jboss.org/theme/js/libs/prettify/188.0.0/prettify.min.js
+    - http://static.jboss.org/theme/js/libs/holder/1.9/holder.js
+    - http://static.jboss.org/theme/fonts/titilliumtext/
+    - http://static.jboss.org/theme/images/common/
+    - http://static.jboss.org/theme/images/tools/
+
+# Update resource URLs based on the profile
 profiles:
   development:
-    base_url: 
-  staging:
-  production:
+    jborg_fonts_url: /cache/static.jboss.org/theme/fonts
+    jborg_images_url: /cache/static.jboss.org/theme/images
+    jborg_js_url: /cache/static.jboss.org/theme/js
+    bootstrap_css_url: /stylesheets/bootstrap-community
+    bootstrap_js_url: /javascripts/bootstrap-community
+    base_url:
 
+  staging:
+    jborg_fonts_url: http://static.jboss.org/theme/fonts
+    jborg_images_url: http://static.jboss.org/theme/images
+    jborg_js_url: http://static.jboss.org/theme/js
+    bootstrap_css_url: http://static.jboss.org/theme/css/community/bootstrap-2.3.1.0
+    bootstrap_js_url: http://static.jboss.org/theme/js/community/bootstrap-2.3.1.0
+    base_url: http://people.redhat.com/~pmuir/windup
+  production:
+    minified: .min
+    jborg_fonts_url: http://static.jboss.org/theme/fonts
+    jborg_images_url: http://static.jboss.org/theme/images
+    jborg_js_url: http://static.jboss.org/theme/js
+    bootstrap_css_url: http://static.jboss.org/theme/css/community/bootstrap-2.3.1.0
+    bootstrap_js_url: http://static.jboss.org/theme/js/community/bootstrap-2.3.1.0
+    base_url: http://<project>.jboss.org
