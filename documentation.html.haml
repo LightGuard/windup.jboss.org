@@ -1,0 +1,36 @@
+---
+layout: base
+---
+- page.bottom_javascripts = [ "#{site.base_url}/javascripts/jquery-scroll.js" ]
+
+.row
+  .span8
+    #guide
+      - site.documentation.sections.each do |section|
+        - if not section.subsection
+          %h1
+            %a{:id=>section.id}
+              #{section.number} #{section.title}
+        - else 
+          %h2
+            %a{:id=>section.id}
+              #{section.number} #{section.title}
+
+        #section
+          = section.content
+  .span4
+    #toc{:style=>"width:266px"}
+      %ul
+        - site.documentation.toc.each do |n|
+          %li
+            %a(id="#{n.link_id}_link" href="##{n.link_id}") 
+              = n.text
+            - if not n.children.empty?
+              %ul
+                - n.children.each do |c|
+                  %li
+                    %a(id="#{c.link_id}_link" href="##{c.link_id}")=c.text
+%script
+  $(window).load(function() { activateScrollingToc([#{site.documentation.ids.map{|c| "'#{c}'"} * ', '}]) })                  
+              
+

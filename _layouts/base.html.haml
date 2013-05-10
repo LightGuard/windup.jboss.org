@@ -1,0 +1,44 @@
+!!!5
+%html
+  %head
+    %meta{ :charset=>'utf-8' }
+    %title Windup 
+    %meta{ :name=>'viewport', :content=>'width=device-width, initial-scale=1.0' }
+    :css
+      body {
+        padding-top: 60px;
+      }
+    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"#{site.base_url}/stylesheets/styles.css" }
+    /[if lt IE 9]
+      %script{ :type=>'text/javascript', :src=>'//html5shim.googlecode.com/svn/trunk/html5.js' }
+    %script{ :type=>'text/javascript', :src=>'//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js' }
+    %script{ :type=>'text/javascript', :src=>'javascripts/site.js' }
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.brand{ :href=>"#{site.base_url}" } Windup
+          %ul.nav
+            %li
+              %a{ :href=>"#{site.base_url}" } Overview
+            %li
+              %a{ :href=>"download.html" } Download
+            %li
+              %a{ :href=>"#{site.base_url}" } Documentation
+            %li
+              %a{ :href=>"getinvolved.html" } Get Involved
+            %li
+              %a{ :href=>"https://community.jboss.org/en/windup?view=discussions" } Forums
+
+    .container
+      ~ content
+      %hr
+      %footer
+        %p &copy; Organization #{Date.today.year}
+    -# Uncomment script tags (remove leading -#) when you're ready to use behaviors
+    %script{:type=>"text/javascript", :src=>"#{site.base_url}/javascripts/site.js" }
+    - if page.bottom_javascripts
+      - page.bottom_javascripts.each do |javascript|
+        %script{:src=>javascript, :type=>'text/javascript'}
+
+    -# %script{ :type=>'text/javascript', :src=>"#{site.base_url}/javascripts/bootstrap-collapse.js" }
