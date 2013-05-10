@@ -25,9 +25,10 @@ module JBoss
                 title = name.gsub(/-/, ' ').strip
                 subsection = number.gsub(/\.0/, ' ') == number
                 content =  Nokogiri::HTML(page.content)
+                relative_path_prefix = @path_prefix[1, @path_prefix.length]
                 content.css('img').each do |img|
                   if relative? img['src']
-                    img['src'] = "#{@path_prefix}/#{img['src']}"
+                    img['src'] = "#{relative_path_prefix}/#{img['src']}"
                   end
                 end
                 content.css('a').each do |a|
